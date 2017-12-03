@@ -3,6 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #welcome_background {
-  background-image:  url('/assets/Cbus_skyline.jpg');
-  color: white;
+  background-image:  url('/assets/Cbus_watercolor_edit.jpg');
+  color: black;
+  font-size: 2.5em;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+
+  body {
+  width: 500px;
+  margin: 0 auto;
+}
+
+p {
+  padding: 10px;
+  margin: 10px;
+}
+
+h1 {
+	padding: 5px;
+	margin: 10px;
+	text-align: center;
+}
+span {
+  background: red;
+  border: 1px solid black;
+}
 }
