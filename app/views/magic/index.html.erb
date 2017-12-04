@@ -1,0 +1,9 @@
+<%= form_tag magic_path do %>
+	<%= text_field_tag :name, nil, placeholder: "Name" %>
+	<%#= select_tag :state, options_for_select(@states), prompt: "Please select" %>
+	<%= submit_tag "Search Cards", class: "btn btn-primary" %>
+<%end%>
+
+<% @all_cards.uniq.each do |names| %>
+	<p><%= names %></p>
+<%end%>
