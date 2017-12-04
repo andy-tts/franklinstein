@@ -4,6 +4,6 @@
 	<%= submit_tag "Search Cards", class: "btn btn-primary" %>
 <%end%>
 
-<% @all_cards.uniq.each do |names| %>
-	<p><%= names %></p>
+<% @all_cards.uniq.each do |card| %>
+	<p><%= card[0] %><img src="<%=card[1]%>"></p>
 <%end%>
