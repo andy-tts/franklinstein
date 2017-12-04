@@ -35,9 +35,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'devise-encryptable'
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 
 gem 'carrierwave'
+gem 'bootstrap-sass'
+gem 'httparty'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
