@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'devise-encryptable'
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 
 gem 'carrierwave'
 
