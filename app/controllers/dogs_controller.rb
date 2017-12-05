@@ -5,16 +5,20 @@ class DogsController < ApplicationController
   # GET /dogs.json
   def index
     @dogs = Dog.all
+   
+    
   end
 
   # GET /dogs/1
   # GET /dogs/1.json
   def show
+
   end
 
   # GET /dogs/new
   def new
     @dog = Dog.new
+    
   end
 
   # GET /dogs/1/edit
@@ -25,7 +29,8 @@ class DogsController < ApplicationController
   # POST /dogs.json
   def create
     @dog = Dog.new(dog_params)
-
+    
+ 
     respond_to do |format|
       if @dog.save
         format.html { redirect_to @dog, notice: 'Dog was successfully created.' }

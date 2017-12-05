@@ -34,6 +34,7 @@
   <div class="field">
     <%= form.label :health_status %>
     <%= form.text_field :health_status, id: :dog_health_status %>
+     @health_status = %w(obesity arthritis dry skin).sort
   </div>
 
   <div class="actions">
