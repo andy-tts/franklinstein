@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :encryptable,
          :recoverable, :rememberable, :trackable, :validatable
   
-         has_many :dogs
-         
+  has_many :dogs
+
   mount_uploader :avatar, AvatarUploader
 
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cho: 9.99
+  pro: 9.99
+  fat: 9.99
+  kcal: 1
+  category: MyString
+
+two:
+  name: MyString
+  cho: 9.99
+  pro: 9.99
+  fat: 9.99
+  kcal: 1
+  category: MyString
