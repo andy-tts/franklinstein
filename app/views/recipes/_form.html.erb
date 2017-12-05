@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :dog_id %>
-    <%= form.number_field :dog_id, id: :recipe_dog_id %>
+    <%= form.select :dog_id, options_for_select(@dog_options), prompt: "Please Select" %>
   </div>
 
   <div class="actions">

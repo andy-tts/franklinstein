@@ -1,10 +1,11 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_dog_options, only: [:new, :edit]
   # GET /recipes
   # GET /recipes.json
   def index
     @recipes = Recipe.all
+
   end
 
   # GET /recipes/1
@@ -19,6 +20,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
+    
   end
 
   # POST /recipes
@@ -65,6 +67,12 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
+    end
+
+    def set_dog_options
+      dogs = Dog.where(user: current_user)
+      @dog_options = dogs.collect do |dog|
+      [dog.name, dog.id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
