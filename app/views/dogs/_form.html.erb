@@ -31,10 +31,10 @@
     <%= form.number_field :weight, id: :dog_weight %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= form.label :health_status %>
-    <%= form.text_field :health_status, id: :dog_health_status %>
-     @health_status = %w(obesity arthritis dry skin).sort
+    <% @health_status = ["obesity", "arthritis", "dry skin", "no health challenges"].sort %>
+    <%= form.select :health_status, options_for_select(@health_status), prompt: "Please Select" %>
   </div>
 
   <div class="actions">

@@ -1,5 +1,5 @@
 class StudentController < ApplicationController
-	has_many: dogs
+	
 
 	def jill
 

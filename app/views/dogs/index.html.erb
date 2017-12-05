@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dogs</h1>
+
 
 <table>
   <thead>
     <tr>
+      <th>Owner</th>
       <th>Name</th>
       <th>Age</th>
       <th>Breed</th>
@@ -17,11 +18,12 @@
   <tbody>
     <% @dogs.each do |dog| %>
       <tr>
+        <td><%= dog.user.try(:first_name) %></td>
         <td><%= dog.name %></td>
         <td><%= dog.age %></td>
         <td><%= dog.breed %></td>
         <td><%= dog.weight %></td>
-        <td><%= select_tag :health_status, options_for_select(@health_status), prompt: "Please Select" %></td>
+        <td> Health Status</td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
         <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
