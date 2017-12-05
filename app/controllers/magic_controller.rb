@@ -12,4 +12,8 @@ def index
 	end
 end
 
+def compare
+	
+end
+
 end
