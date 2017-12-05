@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 
-
+<h2><%= @current_user.first_name %>'s Dogs</h2>
 <table>
   <thead>
     <tr>
-      <th>Owner</th>
       <th>Name</th>
       <th>Age</th>
       <th>Breed</th>
@@ -18,7 +17,6 @@
   <tbody>
     <% @dogs.each do |dog| %>
       <tr>
-        <td><%= dog.user.try(:first_name) %></td>
         <td><%= dog.name %></td>
         <td><%= dog.age %></td>
         <td><%= dog.breed %></td>

@@ -4,7 +4,7 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.all
+    @dogs = Dog.where(user: current_user)
    
     
   end
