@@ -9,7 +9,9 @@
       <th>Age</th>
       <th>Breed</th>
       <th>Weight</th>
+      <!-- <th>Owner</th> -->
       <th>Health Status</th>
+      <th>Recipes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +23,9 @@
         <td><%= dog.age %></td>
         <td><%= dog.breed %></td>
         <td><%= dog.weight %></td>
-        <td> Health Status</td>
+        <!-- <td><%= dog.user.first_name %></td> -->
+        <td><%= dog.health_status %></td>
+        <td><%= link_to 'Recipes', recipes_url %></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
         <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

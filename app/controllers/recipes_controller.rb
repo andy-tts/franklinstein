@@ -20,7 +20,6 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-    
   end
 
   # POST /recipes
@@ -74,6 +73,7 @@ class RecipesController < ApplicationController
       @dog_options = dogs.collect do |dog|
       [dog.name, dog.id]
     end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params

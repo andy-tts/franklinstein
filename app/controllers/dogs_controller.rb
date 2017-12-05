@@ -1,18 +1,15 @@
 class DogsController < ApplicationController
-  before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  before_action :set_dog, only: [:show, :edit, :update, :destroy, :dog_recipe]
 
   # GET /dogs
   # GET /dogs.json
   def index
     @dogs = Dog.where(user: current_user)
-   
-    
   end
 
   # GET /dogs/1
   # GET /dogs/1.json
   def show
-
   end
 
   # GET /dogs/new
