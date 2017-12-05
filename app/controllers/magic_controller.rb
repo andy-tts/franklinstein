@@ -27,6 +27,7 @@ def compare
 	caught2 = false
 	@card1_info = []
 	@card2_info = []
+	img_test = nil
 	if params[:card1].present? && params[:card2].present?
 		@card1 = params[:card1]
 		@card2 = params[:card2]
@@ -34,18 +35,33 @@ def compare
 		second_card = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card2]}")
 
 		first_card['cards'].each do |card|
-			if card['imageUrl'].present? && caught1 = false
-				@card1_info = [card['name'], card['imageUrl']]
-				caught1 = true
-			end
-		end
-		second_card['cards'].each do |card|
-			if card['imageUrl'].present? && caught2 = false
-				@card2_info = [card['name'], card['imageUrl']]
-				caught2 = true
+			if card['name'] == params[:card1]
+				img_test = [1, card['imageUrl']]
+				if img_test[1].present? && caught1 == false
+					@card1_info = [card['name'], card['imageUrl'], card['cmc'], card['types'], card['subtypes'], card['rarity'], card['legalities'], card['type'], card['colorIdentity']]
+					if @card1_info[8].present? == false
+						@card1_info[8] = ["Colorless"]
+					end
+					caught1 = true
+				end
 			end
 		end
 
+		img_test = nil
+
+		second_card['cards'].each do |card|
+			if card['name'] == params[:card2]
+				img_test = [1, card['imageUrl']]
+				if img_test[1].present? && caught2 == false
+					@card2_info = [card['name'], card['imageUrl'], card['cmc'], card['types'], card['subtypes'], card['rarity'], card['legalities'], card['type'], card['colorIdentity']]
+					if @card2_info[8].present? == false
+						@card2_info[8] = ["Colorless"]
+					end
+					caught2 = true
+				end
+			end
+		end
+	
 	end
 end
 

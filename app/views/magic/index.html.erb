@@ -10,8 +10,11 @@
 
 <% @all_cards.in_groups_of(4, false) do |card_group| %>
 	<div class="row">
-		<% card_group.each do |card| %>
-			<div class="col-sm-3 col-md-3 col-lg-3">
+		<% card_group.each_with_index do |card, index| %>
+			<%if index == 2%>
+				<div class="clearfix visible-sm-block"></div>
+			<%end%>
+			<div class="col-sm-6 col-md-3 col-lg-3">
 				<div class="thumbnail">
 					<% if card[1].present? %>
 						<img src="<%=card[1]%>" class="card">

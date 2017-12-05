@@ -1,2 +1,60 @@
 <h1 class="center"><%= @card1 + " || " + @card2 %></h1>
 <p><%= link_to "Back", magic_path %></p>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= form_tag compare_path do %>
+			<%= text_field_tag :card1, nil, placeholder: "Card One", class: "center-block"%>
+			<%= text_field_tag :card2, nil, placeholder: "Card Two", class: "center-block"%>
+			<%= submit_tag "Compare", class: "btn btn-primary", class: "center-block"%>
+		<%end%>
+	</div>
+</div>
+<!-- 
+0 = name
+1 = imageUrl
+2 = cmc
+3 = types
+4 = subtypes
+5 = rarity
+6 = legalities
+7 = type
+8 = colorIdentity
+ -->
+
+<div class="row">
+	<div class="col-md-4 col-sm-4">
+		<img src="<%=@card1_info[1]%>" class="center-block">
+		<h3 class="center"><%=@card1_info[0]%></h3>
+			<div class="center">
+				<p>Color Identity: <%=@card1_info[8]%></p>
+				<p>CMC: <%=@card1_info[2]%></p>
+				<p>Types: <%=@card1_info[7]%></p>
+				<p>Rarity: <%=@card1_info[5]%></p>
+				<p>Formats <%="&"%> Legality:</p>
+				<%@card1_info[6].each do |legality|%>
+					<h4><%=legality['format']%>:</h4>
+					<p><%=legality['legality']%></p>
+				<%end%>
+			</div>
+	</div>
+	<div class="col-md-4 col-sm-4">
+		<h3 class="center">Comparisons</h3>
+		<p class="center"><%=@card1_info[0]%> || <%=@card2_info[0]%></p>
+		<p class="center">This area will display green text when card1 has more of something, like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same</p>
+	</div>
+	<div class="col-md-4 col-sm-4">
+		<img src="<%=@card2_info[1]%>" class="center-block">
+		<h3 class="center"><%=@card2_info[0]%></h3>
+			<div class="center">
+				<p>Color Identity: <%=@card2_info[8]%></p>
+				<p>CMC: <%=@card2_info[2]%></p>
+				<p>Types: <%=@card2_info[7]%></p>
+				<p>Rarity: <%=@card2_info[5]%></p>
+				<p>Formats <%="&"%> Legality:</p>
+				<%@card2_info[6].each do |legality|%>
+					<h4><%=legality['format']%>:</h4>
+					<p><%=legality['legality']%></p>
+				<%end%>
+			</div>
+	</div>
