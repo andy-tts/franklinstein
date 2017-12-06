@@ -1,5 +1,4 @@
 class StudentController < ApplicationController
-	
 
 	def jill
 
