@@ -21,63 +21,46 @@ def index
 end
 
 def compare
-	@card1 = ""
-	@card2 = ""
-	caught1 = false
-	caught2 = false
-	@card1_info = []
-	@card2_info = []
-	img_test = nil
-	none1 = false
-	none2 = false
+	@card_info = []
+	@card = []
+	api_call = []
+	exists = [false, false]
+	none = [false, false]
+	img_test = [nil, nil]
+	caught = [false, false]
 	if params[:card1].present? && params[:card2].present?
-		@card1 = params[:card1]
-		@card2 = params[:card2]
-		first_card = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card1]}")
-		second_card = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card2]}")
+			@card[0] = params[:card1]
+			@card[1] = params[:card2]
+			api_call[0] = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card1]}")
+			api_call[1] = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card2]}")
 
-		if  first_card['cards'] == []
-			@card1_info = ["[card not found]", "/assets/mtg_back.jpg", "0", [], [], [], [{"format":"Reality","legality":"Banned"}], "N/A", ["Colorlesss"]]
-			none1 = true
-		end
+			api_call.each_with_index do |api_info, index|
+				api_call[index]['cards'].each do |card|
+					if card['name'] == @card[index] && exists[index] == false
+						exists[index] = true
+					end
+				end
 
-		if none1 == false
-			first_card['cards'].each do |card|
-				if card['name'] == params[:card1]
-					img_test = [1, card['imageUrl']]
-					if img_test[1].present? && caught1 == false
-						@card1_info = [card['name'], card['imageUrl'], card['cmc'], card['types'], card['subtypes'], card['rarity'], card['legalities'], card['type'], card['colorIdentity']]
-						if @card1_info[8].present? == false
-							@card1_info[8] = ["Colorless"]
+				if  api_call[index]['cards'] == [] || exists[index] == false
+					@card_info[index] = ["[card not found]", "/assets/mtg_back.jpg", "0", [], [], [], [{"format":"Reality","legality":"Banned"}], "N/A", ["Colorlesss"]]
+					none[index] = true
+				end
+
+				if none[index] == false
+					api_call[index]['cards'].each do |card|
+						if card['name'] == @card[index]
+							img_test[index] = [1, card['imageUrl']]
+							if img_test[index][1].present? && caught[index] == false
+								@card_info[index] = [card['name'], card['imageUrl'], card['cmc'], card['types'], card['subtypes'], card['rarity'], card['legalities'], card['type'], card['colorIdentity']]
+								if @card_info[index][8].present? == false
+									@card_info[index][8] = ["Colorless"]
+								end
+								caught[index] = true
+							end
 						end
-						caught1 = true
 					end
 				end
 			end
-		end
-
-		img_test = nil
-
-		if  second_card['cards'] == []
-			@card2_info = ["[card not found]", "/assets/mtg_back.jpg", "0", [], [], [], [{"format":"Reality","legality":"Banned"}], "N/A", ["Colorlesss"]]
-			none2 = true
-		end
-
-		if none2 == false
-			second_card['cards'].each do |card|
-				if card['name'] == params[:card2]
-					img_test = [1, card['imageUrl']]
-					if img_test[1].present? && caught2 == false
-						@card2_info = [card['name'], card['imageUrl'], card['cmc'], card['types'], card['subtypes'], card['rarity'], card['legalities'], card['type'], card['colorIdentity']]
-						if @card2_info[8].present? == false
-							@card2_info[8] = ["Colorless"]
-						end
-						caught2 = true
-					end
-				end
-			end
-		end
-	
 	end
 end
 
