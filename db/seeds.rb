@@ -7,19 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
  
 	categories = [
-	"Dry Ingredients",
-	"Wet Ingredients",
+	"Dry",
+	"Wet",
  "Additives"]
 	
 
-Ingredient.create(
-	name: "Blueberries", 
-	cho: 21 
-	pro: 1.1, 
-	fat: 0.5, 
-	kcal: 83, 
-	category: categories[1]
-	)
+# Ingredient.create(
+# 	name: "Blueberries", 
+# 	cho: 21, 
+# 	pro: 1.1, 
+# 	fat: 0.5, 
+# 	kcal: 83, 
+# 	category: categories[1]
+# 	)
 
 Ingredient.create(
 	name: "Raw Eggs", 
