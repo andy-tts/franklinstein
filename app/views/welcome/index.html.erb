@@ -1,11 +1,11 @@
 
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
 
 <div id="welcome_background">
 
 
-
 <h1>Welcome to Franklinstein!</h1>
+
 <p>We are so happy to see you! Very soon, you'll be able to do something other than look at this pretty watercolor image of the Columbus Skyline! Please disregard the photographer's watermark! </p>
 
 <p>There will be a beautiful NavBar, created by Zak.</p>
@@ -14,10 +14,13 @@
 
 <p> And right below this line of text, you will find a way to sign out of this app. Please come again soon! </p>
 
-
-
  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+ <%= link_to('Jade', jade_path) %>
+ <%= link_to('Jill', dogs_path) %>
+ <%= link_to('Zak', zak_path) %>
 </div>
+
+
 
 <!-- <p>Find me in app/views/welcome/index.html.erb</p>
 	<%# = image_tag current_user.avatar.url, size: "175" %>

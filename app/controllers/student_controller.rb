@@ -1,6 +1,7 @@
 class StudentController < ApplicationController
 
 	def jill
+
 	end
 
 	def jade
