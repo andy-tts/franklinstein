@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 20171205164156) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_salt"
     t.string "first_name"
     t.string "last_name"
     t.string "username"
+    t.string "password_salt"
     t.string "phone"
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get 'jade' => 'student#jade'
   get 'zak' => 'student#zak'
   # get 'dog_recipes' => 'dog#dog_recipes'
-  
+  get 'magic' => 'magic#index'
+  post 'magic' => 'magic#index'
+  get 'compare' => 'magic#compare'
+  post 'compare' => 'magic#compare'
+  get 'allPrint' => 'magic#allPrint'
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-12">
+		<%= form_tag magic_path do %>
+			<%= text_field_tag :name, nil, placeholder: "Name", class: "center-block"%>
+			<%#= select_tag :state, options_for_select(@states), prompt: "Please select" %>
+			<%= submit_tag "Search Cards", class: "btn btn-primary", class: "center-block"%>
+		<%end%>
+	</div>
+</div>
+
+<% @all_cards.in_groups_of(4, false) do |card_group| %>
+	<div class="row">
+		<% card_group.each_with_index do |card, index| %>
+			<%if index == 2%>
+				<div class="clearfix visible-sm-block"></div>
+			<%end%>
+			<div class="col-sm-6 col-md-3 col-lg-3">
+				<div class="thumbnail">
+					<% if card[1].present? %>
+						<img src="<%=card[1]%>" class="card">
+					<% else %>
+						<img src="/assets/mtg_back.jpg" class="card">
+					<%end%>
+					<div class="caption">
+						<h3 class="center"><%=card[0]%></h3>
+						<p class="center"><%=card[2]%></p>
+						<p>
+							<%= link_to "Compare", compare_path(card1: card[0], card2: "Black Lotus"), class: "center-block", class: "btn btn-primary"%>
+							<%= link_to "All Printings", allPrint_path(name: card[0]), class: "center-block", class: "btn btn-default" %>
+						</p>
+					</div>
+				</div>
+			</div>
+		<%end%>
+	</div>
+<%end%>
