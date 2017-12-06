@@ -28,14 +28,14 @@ def compare
 	none = [false, false]
 	img_test = [nil, nil]
 	caught = [false, false]
-	index_variable[0, 1]
+	index_variable = [0, 1]
 	if params[:card1].present? && params[:card2].present?
 			@card[0] = params[:card1]
 			@card[1] = params[:card2]
 			api_call[0] = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card1]}")
 			api_call[1] = HTTParty.get("http://api.magicthegathering.io/v1/cards?name=#{params[:card2]}")
 
-			index_variable do |index|
+			index_variable.each do |index|
 				api_call[index]['cards'].each do |card|
 					if card['name'] == @card[index] && exists[index] == false
 						exists[index] = true
