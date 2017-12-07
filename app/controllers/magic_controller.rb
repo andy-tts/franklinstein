@@ -2,7 +2,7 @@ class MagicController < ApplicationController
 
 include MagicHelper
 #_Card_
-#id: #name: #mana_cost: #cmc: #card_type: #artist: #img_url: #created_at: #updated_at: #set_name:#color_identity:#legalities:#sub_types:#rarity:
+#id: #name: #mana_cost: #cmc: #card_type: #artist: #img_url: #created_at: #updated_at: #set_name:#color_identity:#legalities:#sub_types:#rarity:#multiverse_id
 
 def index
 	prelim_cards = []

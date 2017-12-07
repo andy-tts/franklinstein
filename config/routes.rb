@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'magic' => 'magic#index'
   post 'magic' => 'magic#index'
   get 'compare' => 'magic#compare'
-  post 'compare' => 'magic#compare'
+  # post 'compare' => 'magic#compare'
   get 'allPrint' => 'magic#allPrint'
   get 'compare_json' => 'magic#compare_json'
 

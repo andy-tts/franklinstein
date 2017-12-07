@@ -3,48 +3,48 @@
 	var cardTwo = "<%=@card_info[1].name%>";
 </script>
 
-<h1 class="center"><%= @card[0] + " || " + @card[1] %></h1>
+<h1 class="center" id="pageTopNames"><%= @card_info[0].name + " || " + @card_info[1].name %></h1>
 <p><%= link_to "Back", magic_path %></p>
 
 <div class="row">
 	<div class="col-md-12">
-		<%= form_tag compare_path do %>
-			<%= text_field_tag :card1, nil, placeholder: "Card One", class: "center-block"%>
-			<%= text_field_tag :card2, nil, placeholder: "Card Two", class: "center-block"%>
-			<%= submit_tag "Compare", class: "btn btn-primary", class: "center-block"%>
-		<%end%>
+		<div id="new-comparison-form">
+			<input type="text" id="firstCard" class="center-block" />
+			<input type="text" id="secondCard" class="center-block"/>
+			<h5 class="center"><a href="javascript:newCardValues();">Compare!</a></h5>
+		</div>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-md-4 col-sm-4" id="card-one">
-		<img src="<%=@card_info[0].img_url%>" class="center-block">
-		<h3 class="center"><%=@card_info[0].name%></h3>
+		<div id="imageOne"><img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[0].multiverse_id%>&type=card' class="center-block"></div>
+		<h3 class="center" id="headNameOne"><%=@card_info[0].name%></h3>
 			<div class="center">
-				<p>Color Identity: <%=@card_info[0].color_identity%></p>
-				<p>CMC: <%=@card_info[0].cmc%></p>
-				<p>Types: <%=@card_info[0].card_type%></p>
-				<p>Rarity: <%=@card_info[0].rarity%></p>
+				<p id="colorIdOne">Color Identity: <%=@card_info[0].color_identity%></p>
+				<p id="cmcOne">CMC: <%=@card_info[0].cmc%></p>
+				<p id="cardTypeOne">Types: <%=@card_info[0].card_type%></p>
+				<p id="rarityOne">Rarity: <%=@card_info[0].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<%=@card_info[0].legalities.html_safe%>
+				<div id="legalOne"><%=@card_info[0].legalities.html_safe%></div>
 			</div>
 	</div>
 
 	<div class="col-md-4 col-sm-4" id="comparison-column">
 		<h3 class="center">Comparisons</h3>
-		<p class="center"><%=@card_info[0].name%> || <%=@card_info[1].name%></p>
+		<p class="center" id="comparNames"><%=@card_info[0].name%> || <%=@card_info[1].name%></p>
 		<!-- This area will display green text when card1 has more of something like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same -->
 		<p>Color Identity: <div class="colorId"></div></p>
 	</div>
 	<div class="col-md-4 col-sm-4" id="card-two">
-		<img src="<%=@card_info[1].img_url%>" class="center-block">
-		<h3 class="center"><%=@card_info[1].name%></h3>
+		<div id="imageTwo"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[1].multiverse_id%>&type=card" class="center-block"></div>
+		<h3 class="center" id="headNameTwo"><%=@card_info[1].name%></h3>
 			<div class="center">
-				<p>Color Identity: <%=@card_info[1].color_identity%></p>
-				<p>CMC: <%=@card_info[1].cmc%></p>
-				<p>Types: <%=@card_info[1].card_type%></p>
-				<p>Rarity: <%=@card_info[1].rarity%></p>
+				<p id="colorIdTwo">Color Identity: <%=@card_info[1].color_identity%></p>
+				<p id="cmcTwo">CMC: <%=@card_info[1].cmc%></p>
+				<p id="cardTypeTwo">Types: <%=@card_info[1].card_type%></p>
+				<p id="rarityTwo">Rarity: <%=@card_info[1].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<%=@card_info[1].legalities.html_safe%>
+				<div id="legalTwo"><%=@card_info[1].legalities.html_safe%></div>
 			</div>
 	</div>

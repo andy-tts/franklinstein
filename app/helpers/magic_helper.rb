@@ -10,14 +10,14 @@ module MagicHelper
 		if single_card != nil
 			results['cards'].each do |card|
 				if card['name'] == single_card
-					temp_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'])
+					temp_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'], multiverse_id: card['multiverseid'].to_s)
 					temp_card.set_info
 					new_cards.push(temp_card)
 				end	
 			end
 		else
 			results['cards'].each do |card|
-				temp_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'])
+				temp_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'], multiverse_id: card['multiverseid'].to_s)
 				temp_card.set_info
 				new_cards.push(temp_card)
 			end
@@ -50,6 +50,7 @@ module MagicHelper
 				compare_card.legalities = "none"
 				compare_card.sub_types = "none"
 				compare_card.rarity = "Special"
+				compare_card.multiverse_id = "407694"
 				none = true
 			end
 
@@ -57,7 +58,7 @@ module MagicHelper
 				results['cards'].each do |card|
 					if card['name'] == card_name
 						if card['imageUrl'].present? && caught == false
-							compare_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'])
+							compare_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'], multiverse_id: card['multiverseid'].to_s)
 							caught = true
 						end
 					end
@@ -66,9 +67,5 @@ module MagicHelper
 			compare_card.set_info
 			return compare_card
 	end
-
-	def comparison(card1, card2)
-		
-	end
-
+	
 end
