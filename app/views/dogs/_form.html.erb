@@ -33,7 +33,7 @@
 
  <div class="field">
     <%= form.label :health_status %>
-    <% @health_status = ["obesity", "arthritis", "dry skin", "no health challenges"].sort %>
+    <%  @health_status = ["obesity", "arthritis", "dry skin", "no health challenges"].sort %>
     <%= form.select :health_status, options_for_select(@health_status), prompt: "Please Select" %>
   </div>
 

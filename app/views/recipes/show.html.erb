@@ -10,5 +10,12 @@
   <%= @recipe.dog.try(:name) %>
 </p>
 
+<p>
+  <strong>Ingredient:</strong>
+  <% @recipe.ingredients.each do |ingredient| %>
+  	<p><%= ingredient.name %></p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

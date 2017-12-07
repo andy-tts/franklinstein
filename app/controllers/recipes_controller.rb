@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :set_dog_options, only: [:new, :edit]
+  before_action :set_dog_options
+  before_action :set_ingredient_options, only: [:new, :edit]
   # GET /recipes
   # GET /recipes.json
   def index
@@ -78,12 +79,19 @@ class RecipesController < ApplicationController
     def set_dog_options
       dogs = Dog.where(user: current_user)
       @dog_options = dogs.collect do |dog|
-      [dog.name, dog.id]
+        [dog.name, dog.id]
+      end
     end
-  end
+
+    def set_ingredient_options
+      ingredients = Ingredient.all
+      @ingredient_options = ingredients.collect do |ingredients|
+        [ingredients.name, ingredients.id]
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :dog_id)
+      params.require(:recipe).permit(:name, :dog_id, {:ingredient_ids => []})
     end
 end
