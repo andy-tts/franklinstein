@@ -8,6 +8,13 @@ class RecipesController < ApplicationController
 
   end
 
+  def custom_recipes
+    puts "Something I will be able to find on a page with a bunch of other stuff"
+    puts params
+    @custom_recipes = Recipe.where(dog_id: params[:dog_id])
+    @custom_dog = Dog.find(params[:dog_id])
+  end
+
   # GET /recipes/1
   # GET /recipes/1.json
   def show

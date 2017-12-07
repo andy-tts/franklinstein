@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-3 col-sm-3 col-md-6 col-lg-10 col-lg-offset-1">
+    <p id="notice"><%= notice %></p>
+
+    <h2><%= @custom_dog.name %>'s Recipes</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Dog</th>
+    <!--  <th>Owner</th> -->
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @custom_recipes.each do |recipe| %>
+          <tr>
+            <td><%= recipe.name %></td>
+            <td><%= recipe.dog.try(:name) %></td>
+            <td><%= recipe.dog.user.first_name + " " + recipe.dog.user.last_name %></td>
+            <td><%= link_to 'Show', recipe %></td>
+            <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+            <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-3">
+    <div class="center-block">
+      <button type="button" class="btn btn-default center-block"><%= link_to 'New Recipe', new_recipe_path %>
+      </button>
+    </div>
+  </div>
+</div>
+  

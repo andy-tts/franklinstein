@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :dogs
   root 'welcome#index'
 
+  get 'custom_recipes' => 'recipes#custom_recipes'
+
   get 'jill' => 'student#jill'
   get 'jade' => 'student#jade'
   get 'zak' => 'student#zak'
