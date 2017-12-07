@@ -1,16 +1,3 @@
-// <h1>Here are your posts, via AJAX! (Or rather, AJAJ)</h1>
-
-// <a id="get-post-button" href="javascript:loadPosts();">Load new posts</a>
-
-// <div id="posts">
-// 	<p>Posts</p>	
-// </div>
-
-// <div id="new-post-form">
-// 	<input type="text" id="post-content" />
-// 	<button id="add-post">Add new post!</button>
-// </div>
-
 // function loadPosts() {
 // 	var html = "";
 // 	$.getJSON('/posts.json', function(data){
@@ -39,3 +26,17 @@
 // 	console.log("new post!");
 // 	createPost();
 // });
+
+$(window).on('load', function(){
+	compareCards();
+});
+
+function compareCards() {
+	var information = "";
+	$.getJSON("/compare_json?card1=" + cardOne + "&card2=" + cardTwo, function(data){
+		console.log(data);
+		// var nameTest = data[0]['name']
+		// console.log(nameTest)
+		
+	});
+}

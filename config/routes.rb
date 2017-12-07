@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'compare' => 'magic#compare'
   post 'compare' => 'magic#compare'
   get 'allPrint' => 'magic#allPrint'
+  get 'compare_json' => 'magic#compare_json'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

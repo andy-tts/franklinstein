@@ -24,21 +24,12 @@ def index
 end
 
 def compare
-	@card_info = []
-	@card = []
-	api_call = []
-	index_variable = [0, 1]
-	if params[:card1].present? && params[:card2].present?
-			@card[0] = params[:card1]
-			@card[1] = params[:card2]
-			api_call[0] = grab_api(params[:card1])
-			api_call[1] = grab_api(params[:card2])
+	compare_cards(params[:card1], params[:card2])
+end
 
-			index_variable.each do |index|
-				card = single_card(api_call[index], @card[index])
-				@card_info.push(card)
-			end
-	end
+def compare_json
+	compare_cards(params[:card1], params[:card2])
+	render json: @card_info
 end
 
 def allPrint
@@ -48,6 +39,26 @@ def allPrint
 		card_name = params[:name]
 		results = grab_api(params[:name])
 		@all_cards = create_some_cards(results, card_name)
+	end
+end
+
+private
+
+def compare_cards(card1, card2)
+	@card_info = []
+	@card = []
+	api_call = []
+	index_variable = [0, 1]
+	if card1.present? && card2.present?
+			@card[0] = card1
+			@card[1] = card2
+			api_call[0] = grab_api(card1)
+			api_call[1] = grab_api(card2)
+
+			index_variable.each do |index|
+				card = single_card(api_call[index], @card[index])
+				@card_info.push(card)
+			end
 	end
 end
 
