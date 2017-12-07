@@ -1,4 +1,4 @@
-<h1 class="center"><%= @card_name %></h1>
+<h1 class="center"><%= @all_cards[0].name %></h1>
 <p><%= link_to "Back", magic_path %></p>
 
 <% @all_cards.in_groups_of(4, false) do |card_group| %>
@@ -9,14 +9,14 @@
 			<%end%>
 			<div class="col-sm-3 col-md-3 col-lg-3">
 				<div class="thumbnail">
-					<% if card[0].present? %>
-						<img src="<%=card[0]%>" class="card">
+					<% if card.img_url.present? %>
+						<img src="<%=card.img_url%>" class="card">
 					<% else %>
 						<img src="/assets/mtg_back.jpg" class="card">
 					<%end%>
 					<div class="caption">
-						<h3 class="center"><%=card[1]%></h3>
-						<p class="center"><%=card[2]%></p>
+						<h3 class="center"><%=card.set_name%></h3>
+						<p class="center"><%=card.artist%></p>
 						<!-- <p> -->
 							<%#= link_to "Compare", compare_path, class: "center-block", class: "btn btn-primary"%>
 							<%#= link_to "All Printings", allPrint_path(name: card[0]), class: "center-block", class: "btn btn-default" %>

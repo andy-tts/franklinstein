@@ -24,37 +24,39 @@
 
 <div class="row">
 	<div class="col-md-4 col-sm-4" id="card-one">
-		<img src="<%=@card_info[0][1]%>" class="center-block">
-		<h3 class="center"><%=@card_info[0][0]%></h3>
+		<img src="<%=@card_info[0].img_url%>" class="center-block">
+		<h3 class="center"><%=@card_info[0].name%></h3>
 			<div class="center">
-				<p>Color Identity: <%=@card_info[0][8]%></p>
-				<p>CMC: <%=@card_info[0][2]%></p>
-				<p>Types: <%=@card_info[0][7]%></p>
-				<p>Rarity: <%=@card_info[0][5]%></p>
+				<p>Color Identity: <%=@card_info[0].color_identity%></p>
+				<p>CMC: <%=@card_info[0].cmc%></p>
+				<p>Types: <%=@card_info[0].card_type%></p>
+				<p>Rarity: <%=@card_info[0].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<%@card_info[0][6].each do |legality|%>
-					<h4><%=legality['format']%>:</h4>
-					<p><%=legality['legality']%></p>
-				<%end%>
+				<p><%=@card_info[0].legalities%></p>
+				<%#@card_info[0][6].each do |legality|%>
+					<!-- <h4><%#=legality['format']%>:</h4> -->
+					<!-- <p><%#=legality['legality']%></p> -->
+				<%#end%>
 			</div>
 	</div>
 	<div class="col-md-4 col-sm-4" id="comparison-column">
 		<h3 class="center">Comparisons</h3>
-		<p class="center"><%=@card_info[0][0]%> || <%=@card_info[1][0]%></p>
+		<p class="center"><%=@card_info[0].name%> || <%=@card_info[1].name%></p>
 		<p class="center">This area will display green text when card1 has more of something, like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same</p>
 	</div>
 	<div class="col-md-4 col-sm-4" id="card-two">
-		<img src="<%=@card_info[1][1]%>" class="center-block">
-		<h3 class="center"><%=@card_info[1][0]%></h3>
+		<img src="<%=@card_info[1].img_url%>" class="center-block">
+		<h3 class="center"><%=@card_info[1].name%></h3>
 			<div class="center">
-				<p>Color Identity: <%=@card_info[1][8]%></p>
-				<p>CMC: <%=@card_info[1][2]%></p>
-				<p>Types: <%=@card_info[1][7]%></p>
-				<p>Rarity: <%=@card_info[1][5]%></p>
+				<p>Color Identity: <%=@card_info[1].color_identity%></p>
+				<p>CMC: <%=@card_info[1].cmc%></p>
+				<p>Types: <%=@card_info[1].card_type%></p>
+				<p>Rarity: <%=@card_info[1].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<%@card_info[1][6].each do |legality|%>
-					<h4><%=legality['format']%>:</h4>
-					<p><%=legality['legality']%></p>
-				<%end%>
+				<p><%=@card_info[1].legalities%></p>
+				<%#@card_info[1][6].each do |legality|%>
+					<!-- <h4><%#=legality['format']%>:</h4> -->
+					<!-- <p><%#=legality['legality']%></p> -->
+				<%#end%>
 			</div>
 	</div>
