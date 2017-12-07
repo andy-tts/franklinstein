@@ -22,6 +22,10 @@
 8 = colorIdentity
  -->
 
+<p><%=@card_info[0].color_identity%></p>
+<p><%=@card_info[0].legalities%></p>
+<p><%=@card_info[0].sub_types%></p>
+
 <div class="row">
 	<div class="col-md-4 col-sm-4" id="card-one">
 		<img src="<%=@card_info[0].img_url%>" class="center-block">
@@ -32,7 +36,7 @@
 				<p>Types: <%=@card_info[0].card_type%></p>
 				<p>Rarity: <%=@card_info[0].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<p><%=@card_info[0].legalities%></p>
+				<%=@card_info[0].legalities.html_safe%>
 				<%#@card_info[0][6].each do |legality|%>
 					<!-- <h4><%#=legality['format']%>:</h4> -->
 					<!-- <p><%#=legality['legality']%></p> -->
@@ -53,7 +57,7 @@
 				<p>Types: <%=@card_info[1].card_type%></p>
 				<p>Rarity: <%=@card_info[1].rarity%></p>
 				<p>Formats <%="&"%> Legality:</p>
-				<p><%=@card_info[1].legalities%></p>
+				<%=@card_info[1].legalities.html_safe%>
 				<%#@card_info[1][6].each do |legality|%>
 					<!-- <h4><%#=legality['format']%>:</h4> -->
 					<!-- <p><%#=legality['legality']%></p> -->
