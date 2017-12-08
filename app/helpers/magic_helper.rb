@@ -31,7 +31,6 @@ module MagicHelper
 			caught = false
 			compare_card = Card.new()
 
-
 			results['cards'].each do |card|
 				if card['name'] == card_name && exists == false
 					exists = true
@@ -39,17 +38,17 @@ module MagicHelper
 			end
 
 			if  results['cards'] == [] || exists == false
-				compare_card.name = "[card not found]"
+				compare_card.name = card_name
 				compare_card.mana_cost = "0"
 				compare_card.cmc = 0
-				compare_card.card_type = "Basic Land"
+				compare_card.card_type = "Artifact"
 				compare_card.artist = "N/A"
 				compare_card.img_url = "assets/mtg_back.jpg"
 				compare_card.set_name = "N/A"
 				compare_card.color_identity = "C"
 				compare_card.legalities = "none"
 				compare_card.sub_types = "none"
-				compare_card.rarity = "Special"
+				compare_card.rarity = "Common"
 				compare_card.multiverse_id = "407694"
 				none = true
 			end
@@ -67,5 +66,5 @@ module MagicHelper
 			compare_card.set_info
 			return compare_card
 	end
-	
+
 end

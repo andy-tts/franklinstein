@@ -1,6 +1,8 @@
 <script type="text/javascript">
 	var cardOne = "<%=@card_info[0].name%>";
 	var cardTwo = "<%=@card_info[1].name%>";
+	globalOne = cardOne;
+	globalTwo = cardTwo;
 </script>
 
 <h1 class="center" id="pageTopNames"><%= @card_info[0].name + " || " + @card_info[1].name %></h1>
@@ -9,9 +11,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<div id="new-comparison-form">
-			<input type="text" id="firstCard" class="center-block" />
-			<input type="text" id="secondCard" class="center-block"/>
-			<h5 class="center"><a href="javascript:newCardValues();">Compare!</a></h5>
+			<p class="center">Left Card: <input type="text" id="firstCard" class="center-block" /></p>
+			<p class="center">Right Card: <input type="text" id="secondCard" class="center-block"/></p>
+			<h4 class="center"><a href="javascript:newCardValues(globalOne, globalTwo);">Compare!</a></h4>
 		</div>
 	</div>
 </div>
@@ -20,6 +22,7 @@
 	<div class="col-md-4 col-sm-4" id="card-one">
 		<div id="imageOne"><img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[0].multiverse_id%>&type=card' class="center-block"></div>
 		<h3 class="center" id="headNameOne"><%=@card_info[0].name%></h3>
+		<h5 class="center" id="searchMeOne"><a href="/magic?name=<%=@card_info[0].name%>">Search '<%=@card_info[0].name%>'</a></h5>
 			<div class="center">
 				<p id="colorIdOne">Color Identity: <%=@card_info[0].color_identity%></p>
 				<p id="cmcOne">CMC: <%=@card_info[0].cmc%></p>
@@ -36,9 +39,11 @@
 		<!-- This area will display green text when card1 has more of something like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same -->
 		<p>Color Identity: <div class="colorId"></div></p>
 	</div>
+
 	<div class="col-md-4 col-sm-4" id="card-two">
 		<div id="imageTwo"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[1].multiverse_id%>&type=card" class="center-block"></div>
 		<h3 class="center" id="headNameTwo"><%=@card_info[1].name%></h3>
+		<h5 class="center" id="searchMeTwo"><a href="/magic?name=<%=@card_info[1].name%>">Search '<%=@card_info[1].name%>'</a></h5>
 			<div class="center">
 				<p id="colorIdTwo">Color Identity: <%=@card_info[1].color_identity%></p>
 				<p id="cmcTwo">CMC: <%=@card_info[1].cmc%></p>
