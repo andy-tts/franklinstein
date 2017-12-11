@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207202322) do
+ActiveRecord::Schema.define(version: 20171209163235) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20171207202322) do
     t.string "sub_types"
     t.string "rarity"
     t.string "multiverse_id"
+    t.string "super_types"
+    t.string "basic_types"
   end
 
   create_table "dogs", force: :cascade do |t|

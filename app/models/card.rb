@@ -12,7 +12,7 @@ class Card < ApplicationRecord
 		first = true
 		break_array = self.color_identity.chars
 		break_array.each do |char|
-			if char == "R" || char == "B" || char == "U" || char == "G" || char == "W" || char === "C"
+			if char == "R" || char == "B" || char == "U" || char == "G" || char == "W" || char == "C"
 				if char == "R"
 					color = "Red"
 				elsif char == "B"
@@ -71,9 +71,11 @@ class Card < ApplicationRecord
 		end
 
 		info = ""
+		info2 = ""
 
 		formats.each_with_index do |formatt, index|
 			info = info + "<h4> #{formatt}:</h4><p>#{legalities[index]}</p>"
+			info2 = info2 + "|#{formatt}:#{legalities[index]}|"
 		end
 
 		if self.rarity == "Basic Land"
@@ -84,4 +86,14 @@ class Card < ApplicationRecord
 		self.color_identity = colors
 	end
 
+	# def colors_array
+	# 	break_array = []
+	# 	colors = []
+	# 	break_array = self.color_identity.split(", ")
+	# 	break_array.each do |color|
+	# 			colors.push(color)
+	# 		end
+	# 	end
+	# 	return colors
+	# end
 end
