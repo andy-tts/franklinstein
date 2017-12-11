@@ -9,6 +9,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Age</th>
       <th>Breed</th>
@@ -23,6 +24,7 @@
   <tbody>
     <% @dogs.each do |dog| %>
       <tr>
+        <td><%= dog.avatar %></td>
         <td><%= dog.name %></td>
         <td><%= dog.age %></td>
         <td><%= dog.breed %></td>
