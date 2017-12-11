@@ -26,6 +26,22 @@ function compareCards(one, two) {
 		//---------------------------------------------
 		$("#comparNames").html(data[0]['name'] + " || " + data[1]['name']);
 		//---------------------------------------------
+		if (data[0]['cmc'] < data[1]['cmc']){
+			$("#cmc").html("|<b class='better'>" + data[0]['cmc'] + "</b>|<i class='worse'>" + data[1]['cmc'] + "</i>|");
+		} else if (data[0]['cmc'] > data[1]['cmc']) {
+			$("#cmc").html("|<i class='worse'>" + data[0]['cmc'] + "</i>|<b class='better'>" + data[1]['cmc'] + "</b>|");
+		} else {
+			$("#cmc").html("|<strong class='same'>" + data[0]['cmc'] + "</strong>|<strong class='same'>" + data[1]['cmc'] + "</strong>|");
+		}
+		// -----
+		
+		// -----
+		if (data[0]['rarity'] === data[1]['rarity']){
+			$("#rarity").html("|<strong class='same'>" + data[0]['rarity'] + "</strong>|<strong class='same'>" + data[1]['rarity'] + "</strong>|");
+		} else {
+			$("#rarity").html("|<i class='different'>" + data[0]['rarity'] + "</i>|<i class='different'>" + data[1]['rarity'] + "</i>|");
+		}
+		//---------------------------------------------
 		globalOne = data[0]['name'];
 		globalTwo = data[1]['name'];
 	});

@@ -44,18 +44,24 @@
 		<p class="center">Color Identity: </p>
 		<p class="center" id="colorId">| <%=@card_info[0].color_identity%> | content here | <%=@card_info[1].color_identity%> |</p>
 		<p class="center">CMC: </p>
-		<p class="center" id="cmc"><%if @card_info[0].cmc > @card_info[1].cmc%>
+		<p class="center" id="cmc"><%if @card_info[0].cmc < @card_info[1].cmc%>
 			|<b class="better"><%=@card_info[0].cmc%></b>|<i class="worse"><%=@card_info[1].cmc%></i>|
-			<%elsif @card_info[0].cmc < @card_info[1].cmc%>
+			<%elsif @card_info[0].cmc > @card_info[1].cmc%>
 			|<i class="worse"><%=@card_info[0].cmc%></i>|<b class="better"><%=@card_info[1].cmc%></b>|
 			<%else%>
 			|<strong class="same"><%=@card_info[0].cmc%></strong>|<strong class="same"><%=@card_info[1].cmc%></strong>|
 			<%end%>
 		</p>
-		<p class="center">Types</p>
+		<p class="center">Types: </p>
 		<p class="center" id="cardType"></p>
 		<p class="center">Rarity: </p>
-		<p class="center" id="rarity"></p>
+		<p class="center" id="rarity">
+			<%if @card_info[0].rarity == @card_info[1].rarity%>
+			|<strong class="same"><%=@card_info[0].rarity%></strong>|<strong class="same"><%=@card_info[1].rarity%></strong>|
+			<%elsif%>
+			|<i class="different"><%=@card_info[0].rarity%></i>|<i class="different"><%=@card_info[1].rarity%></i>|
+			<%end%>
+		</p>
 	</div>
 
 	<div class="col-md-4 col-sm-4" id="card-two">
