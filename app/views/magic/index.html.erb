@@ -2,7 +2,6 @@
 	<div class="col-md-12">
 		<%= form_tag magic_path do %>
 			<%= text_field_tag :name, nil, placeholder: "Name", class: "center-block"%>
-			<%#= select_tag :state, options_for_select(@states), prompt: "Please select" %>
 			<%= submit_tag "Search Cards", class: "btn btn-primary", class: "center-block"%>
 		<%end%>
 	</div>
@@ -25,7 +24,7 @@
 						<h3 class="center"><%=card.name%></h3>
 						<p class="center"><%=card.card_type%></p>
 						<p>
-							<%= link_to "Compare", compare_path(card1: card.name, card2: "Black Lotus"), class: "center-block", class: "btn btn-primary"%>
+							<%= link_to "Compare", compare_path(card1: card.name, card2: "Damia, Sage of Stone"), class: "center-block", class: "btn btn-primary"%>
 							<%= link_to "All Printings", allPrint_path(name: card.name), class: "center-block", class: "btn btn-default" %>
 						</p>
 					</div>

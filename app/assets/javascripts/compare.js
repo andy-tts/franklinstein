@@ -1,5 +1,8 @@
-var globalOne = "Sol Ring";
-var globalTwo = "Black Lotus";
+var color_array_one = [];
+var color_array_two = [];
+var shared = ["none"];
+var different_one = ["only shared"];
+var different_two = ["only shared"];
 
 function compareCards(one, two) {
 	var information = "";
@@ -26,11 +29,46 @@ function compareCards(one, two) {
 		//---------------------------------------------
 		$("#comparNames").html(data[0]['name'] + " || " + data[1]['name']);
 		//---------------------------------------------
-		if (data[0]['color_identity'] === data[1]['color_identity']){
-			$("#colorId").html("|<strong class='same'>" + data[0]['color_identity'] + "</strong>|<strong class='same'>" + data[1]['color_identity'] + "</strong>|");
-		} else {
-			$("#colorId").html("|<i class='different'>" + data[0]['color_identity'] + "</i>|<i class='different'>" + data[1]['color_identity'] + "</i>|");
-		}
+		color_array_one = data[0]['color_identity'].split(', ');
+		color_array_two = data[1]['color_identity'].split(', ');
+		shared = ["none"];
+		different_one = ["only shared"];
+		different_two = ["only shared"];
+		$.each(color_array_one, function(index, value) {
+  			$.each(color_array_two, function(index2, value2){
+  				if (value === value2) {
+  					if (shared[0] === "none"){
+  						shared[0] = value;
+  					} else {
+  						shared.push(value);
+  					}
+  				}
+  			});
+		});
+
+		$.each(color_array_one, function(index, value){
+			if (shared.includes(value) === false){
+				if (different_one[0] === "only shared") {
+					different_one[0] = value;
+				} else {
+					different_one.push(value);
+				}
+			}
+		});
+
+		$.each(color_array_two, function(index, value){
+			if (shared.includes(value) === false){
+				if (different_two[0] === "only shared") {
+					different_two[0] = value;
+				} else {
+					different_two.push(value);
+				}
+			}
+		});
+		// -----
+		$("#colorId").html(
+			"<p class='different'>" + data[0]['name'] + ": " + different_one + "</p><p class='same'> Shared: " + shared + "</p><p class='different'>" + data[1]['name'] + ": " + different_two + "</p>"
+		);
 		// -----
 		if (data[0]['cmc'] < data[1]['cmc']){
 			$("#cmc").html("|<b class='better'>" + data[0]['cmc'] + "</b>|<i class='worse'>" + data[1]['cmc'] + "</i>|");
@@ -40,7 +78,79 @@ function compareCards(one, two) {
 			$("#cmc").html("|<strong class='same'>" + data[0]['cmc'] + "</strong>|<strong class='same'>" + data[1]['cmc'] + "</strong>|");
 		}
 		// -----
-		
+		var temp_array = [];
+		var all_types1 = [];
+		var all_types2 = [];
+		shared = ["none"];
+		different_one = ["only shared"];
+		different_two = ["only shared"];
+		if (data[0]['super_types'] != null){
+			temp_array = JSON.parse(data[0]['super_types']);
+			$.each(temp_array, function(index, value){
+				all_types1.push(value);
+			});
+		}
+		if (data[1]['super_types'] != null){
+			temp_array = JSON.parse(data[1]['super_types']);
+			$.each(temp_array, function(index, value){
+				all_types2.push(value);
+			});
+		}
+		temp_array = JSON.parse(data[0]['basic_types']);
+		$.each(temp_array, function(index, value){
+			all_types1.push(value);
+		});
+		temp_array = JSON.parse(data[1]['basic_types']);
+		$.each(temp_array, function(index, value){
+			all_types2.push(value);
+		});
+		if (data[0]['sub_types'] != ""){
+			temp_array = JSON.parse(data[0]['sub_types']);
+			$.each(temp_array, function(index, value){
+				all_types1.push(value);
+			});
+		}
+		if (data[1]['sub_types'] != ""){
+			temp_array = JSON.parse(data[1]['sub_types']);
+			$.each(temp_array, function(index, value){
+				all_types2.push(value);
+			});
+		}
+
+		$.each(all_types1, function(index, value) {
+  			$.each(all_types2, function(index2, value2){
+  				if (value === value2) {
+  					if (shared[0] === "none"){
+  						shared[0] = value;
+  					} else {
+  						shared.push(value);
+  					}
+  				}
+  			});
+		});
+		$.each(all_types1, function(index, value){
+			if (shared.includes(value) === false){
+				if (different_one[0] === "only shared") {
+					different_one[0] = value;
+				} else {
+					different_one.push(value);
+				}
+			}
+		});
+
+		$.each(all_types2, function(index, value){
+			if (shared.includes(value) === false){
+				if (different_two[0] === "only shared") {
+					different_two[0] = value;
+				} else {
+					different_two.push(value);
+				}
+			}
+		});
+		// -----
+		$("#cardType").html(
+			"<p class='different'>" + data[0]['name'] + ": " + different_one + "</p><p class='same'> Shared: " + shared + "</p><p class='different'>" + data[1]['name'] + ": " + different_two + "</p>"
+		);
 		// -----
 		if (data[0]['rarity'] === data[1]['rarity']){
 			$("#rarity").html("|<strong class='same'>" + data[0]['rarity'] + "</strong>|<strong class='same'>" + data[1]['rarity'] + "</strong>|");
@@ -68,7 +178,3 @@ function newCardValues(friendCard, enemyCard) {
 	$("#firstCard").val('');
 	$("#secondCard").val('');
 }
-
-$(document).ready(function(){
-	compareCards(globalOne, globalTwo);
-});

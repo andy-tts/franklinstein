@@ -4,14 +4,13 @@
 	var cardTwo = "<%=@card_info[1].name%>";
 	globalOne = cardOne;
 	globalTwo = cardTwo;
+	$(document).ready(function(){
+		compareCards(globalOne, globalTwo);
+	});
 </script>
 
-<h1 class="center" id="pageTopNames"><%= @card_info[0].name + " || " + @card_info[1].name %></h1>
-<p><%= link_to "Back", magic_path %></p>
-<!-- 
-<%#=@card_info[0].super_types%>
-<%#=@card_info[0].basic_types%>
-<%#=@card_info[0].sub_types%> -->
+<h1 class="center" id="pageTopNames"></h1>
+<p><%= link_to "Back", magic_path %></p> 
 
 <div class="row">
 	<div class="col-md-12">
@@ -40,15 +39,15 @@
 
 	<div class="col-md-4 col-sm-4" id="comparison-column">
 		<h3 class="center">Comparisons</h3>
-		<p class="center" id="comparNames"><%=@card_info[0].name%> || <%=@card_info[1].name%></p>
+		<p class="center" id="comparNames"></p>
 		<!-- This area will display green text when card1 has more of something like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same -->
-		<p class="center">Color Identity: </p>
+		<h4 class="center">Color Identity: </h4>
 		<p class="center" id="colorId"></p>
-		<p class="center">CMC: </p>
+		<h4 class="center">CMC: </h4>
 		<p class="center" id="cmc"></p>
-		<p class="center">Types: </p>
+		<h4 class="center">Types: </h4>
 		<p class="center" id="cardType"></p>
-		<p class="center">Rarity: </p>
+		<h4 class="center">Rarity: </h4>
 		<p class="center" id="rarity"></p>
 	</div>
 
