@@ -1,3 +1,4 @@
+<script type="text/javascript" src="assets/compare.js"></script>
 <script type="text/javascript">
 	var cardOne = "<%=@card_info[0].name%>";
 	var cardTwo = "<%=@card_info[1].name%>";
@@ -7,10 +8,10 @@
 
 <h1 class="center" id="pageTopNames"><%= @card_info[0].name + " || " + @card_info[1].name %></h1>
 <p><%= link_to "Back", magic_path %></p>
-
-<%=@card_info[0].super_types%>
-<%=@card_info[0].basic_types%>
-<%=@card_info[0].sub_types%>
+<!-- 
+<%#=@card_info[0].super_types%>
+<%#=@card_info[0].basic_types%>
+<%#=@card_info[0].sub_types%> -->
 
 <div class="row">
 	<div class="col-md-12">
@@ -24,16 +25,16 @@
 
 <div class="row">
 	<div class="col-md-4 col-sm-4" id="card-one">
-		<div id="imageOne"><img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[0].multiverse_id%>&type=card' class="center-block"></div>
-		<h3 class="center" id="headNameOne"><%=@card_info[0].name%></h3>
-		<h5 class="center" id="searchMeOne"><a href="/magic?name=<%=@card_info[0].name%>">Search '<%=@card_info[0].name%>'</a></h5>
+		<div id="imageOne"></div>
+		<h3 class="center" id="headNameOne"></h3>
+		<h5 class="center" id="searchMeOne"></h5>
 			<div class="center">
-				<p id="colorIdOne">Color Identity: <%=@card_info[0].color_identity%></p>
-				<p id="cmcOne">CMC: <%=@card_info[0].cmc%></p>
-				<p id="cardTypeOne">Types: <%=@card_info[0].card_type%></p>
-				<p id="rarityOne">Rarity: <%=@card_info[0].rarity%></p>
+				<p id="colorIdOne">Color Identity:</p>
+				<p id="cmcOne">CMC:</p>
+				<p id="cardTypeOne">Types:</p>
+				<p id="rarityOne">Rarity:</p>
 				<p>Formats <%="&"%> Legality:</p>
-				<div id="legalOne"><%=@card_info[0].legalities.html_safe%></div>
+				<div id="legalOne"></div>
 			</div>
 	</div>
 
@@ -42,38 +43,25 @@
 		<p class="center" id="comparNames"><%=@card_info[0].name%> || <%=@card_info[1].name%></p>
 		<!-- This area will display green text when card1 has more of something like converted mana cost, blue when it's different but not better, red when it's less or worse, and purple when they're the same -->
 		<p class="center">Color Identity: </p>
-		<p class="center" id="colorId">| <%=@card_info[0].color_identity%> | content here | <%=@card_info[1].color_identity%> |</p>
+		<p class="center" id="colorId"></p>
 		<p class="center">CMC: </p>
-		<p class="center" id="cmc"><%if @card_info[0].cmc < @card_info[1].cmc%>
-			|<b class="better"><%=@card_info[0].cmc%></b>|<i class="worse"><%=@card_info[1].cmc%></i>|
-			<%elsif @card_info[0].cmc > @card_info[1].cmc%>
-			|<i class="worse"><%=@card_info[0].cmc%></i>|<b class="better"><%=@card_info[1].cmc%></b>|
-			<%else%>
-			|<strong class="same"><%=@card_info[0].cmc%></strong>|<strong class="same"><%=@card_info[1].cmc%></strong>|
-			<%end%>
-		</p>
+		<p class="center" id="cmc"></p>
 		<p class="center">Types: </p>
 		<p class="center" id="cardType"></p>
 		<p class="center">Rarity: </p>
-		<p class="center" id="rarity">
-			<%if @card_info[0].rarity == @card_info[1].rarity%>
-			|<strong class="same"><%=@card_info[0].rarity%></strong>|<strong class="same"><%=@card_info[1].rarity%></strong>|
-			<%elsif%>
-			|<i class="different"><%=@card_info[0].rarity%></i>|<i class="different"><%=@card_info[1].rarity%></i>|
-			<%end%>
-		</p>
+		<p class="center" id="rarity"></p>
 	</div>
 
 	<div class="col-md-4 col-sm-4" id="card-two">
-		<div id="imageTwo"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%=@card_info[1].multiverse_id%>&type=card" class="center-block"></div>
-		<h3 class="center" id="headNameTwo"><%=@card_info[1].name%></h3>
-		<h5 class="center" id="searchMeTwo"><a href="/magic?name=<%=@card_info[1].name%>">Search '<%=@card_info[1].name%>'</a></h5>
+		<div id="imageTwo"></div>
+		<h3 class="center" id="headNameTwo"></h3>
+		<h5 class="center" id="searchMeTwo"></h5>
 			<div class="center">
-				<p id="colorIdTwo">Color Identity: <%=@card_info[1].color_identity%></p>
-				<p id="cmcTwo">CMC: <%=@card_info[1].cmc%></p>
-				<p id="cardTypeTwo">Types: <%=@card_info[1].card_type%></p>
-				<p id="rarityTwo">Rarity: <%=@card_info[1].rarity%></p>
+				<p id="colorIdTwo">Color Identity:</p>
+				<p id="cmcTwo">CMC:</p>
+				<p id="cardTypeTwo">Types:</p>
+				<p id="rarityTwo">Rarity:</p>
 				<p>Formats <%="&"%> Legality:</p>
-				<div id="legalTwo"><%=@card_info[1].legalities.html_safe%></div>
+				<div id="legalTwo"></div>
 			</div>
 	</div>
