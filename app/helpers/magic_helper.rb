@@ -59,9 +59,10 @@ module MagicHelper
 			if none == false
 				results['cards'].each do |card|
 					if card['name'] == card_name
-						if card['imageUrl'].present? && caught == false
+						if card['imageUrl'].present? #&& caught == false
 							compare_card = Card.new(name: card['name'], mana_cost: card['manaCost'], cmc: card['cmc'], card_type: card['type'], artist: card['artist'], img_url: card['imageUrl'], set_name: card['setName'], color_identity: card['colorIdentity'].to_s, legalities: card['legalities'].to_s, sub_types: card['subtypes'].to_s, rarity: card['rarity'], multiverse_id: card['multiverseid'].to_s, super_types: card['supertypes'], basic_types: card['types'])
-							caught = true
+							# caught = true
+							break
 						end
 					end
 				end

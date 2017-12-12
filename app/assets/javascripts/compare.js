@@ -5,7 +5,6 @@ var different_one = ["only shared"];
 var different_two = ["only shared"];
 
 function compareCards(one, two) {
-	var information = "";
 	$.getJSON("/compare_json?card1=" + one + "&card2=" + two, function(data){
 		$("#pageTopNames").html(data[0]['name'] + " || " + data[1]['name']);
 		//---------------------------------------------

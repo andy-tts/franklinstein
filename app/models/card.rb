@@ -85,15 +85,4 @@ class Card < ApplicationRecord
 		self.legalities = info
 		self.color_identity = colors
 	end
-
-	# def colors_array
-	# 	break_array = []
-	# 	colors = []
-	# 	break_array = self.color_identity.split(", ")
-	# 	break_array.each do |color|
-	# 			colors.push(color)
-	# 		end
-	# 	end
-	# 	return colors
-	# end
 end
