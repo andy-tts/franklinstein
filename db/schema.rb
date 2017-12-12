@@ -12,6 +12,25 @@
 
 ActiveRecord::Schema.define(version: 20171211171456) do
 
+  create_table "cards", force: :cascade do |t|
+    t.string "name"
+    t.string "mana_cost"
+    t.integer "cmc"
+    t.string "card_type"
+    t.string "artist"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "set_name"
+    t.string "color_identity"
+    t.string "legalities"
+    t.string "sub_types"
+    t.string "rarity"
+    t.string "multiverse_id"
+    t.string "super_types"
+    t.string "basic_types"
+  end
+
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.integer "age"
