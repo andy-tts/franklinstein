@@ -25,6 +25,7 @@
     <%= form.label :ingredient_ids %>
     <%= form.collection_check_boxes :ingredient_ids,
       Ingredient.all, :id, :name %>
+
   </div>
 
   <div class="actions">
