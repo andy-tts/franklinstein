@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: recipe, local: true) do |form| %>
   <% if recipe.errors.any? %>
     <div id="error_explanation">
@@ -22,13 +24,32 @@
   </div>
 
   <div class="field">
-    <%= form.label :ingredient_ids %>
-    <%= form.collection_check_boxes :ingredient_ids,
-      Ingredient.all, :id, :name %>
+    <table class="table" id="sort_ingredient">
+      <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+    </tr>
+  </thead>
 
+    <tbody>
+      <%= form.collection_check_boxes :ingredient_ids,
+        Ingredient.all, :id, :name do |box| %>
+        <tr>
+          <td><%= box.check_box %>
+              <%= box.label %>
+          </td>
+          <td>
+            <%= box.object.category %>
+          </td>
+        </tr>  
+      <% end %>
+      </tbody>
+    </table> 
+   
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
+<% end %> 

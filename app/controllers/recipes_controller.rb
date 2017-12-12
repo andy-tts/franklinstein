@@ -83,11 +83,27 @@ class RecipesController < ApplicationController
       end
     end
 
+    def set_dry_ingredients_options
+      dry_ingredients = Ingredients.where(category: "Dry Ingredients")
+      @dry_ingredients_options = ingredients.collect do |dry_ingredients|
+        [ingredient.name, ingredient.id]
+      end
+    end
+
+    def set_wet_ingredients_options
+      wet_ingredients = Ingredients.where(category: "Wet Ingredients")
+      @wet_ingredients_options = ingredients.collect do |wet_ingredients|
+        [ingredient.name, ingredient.id]
+      end
+    end
+
+
     def set_ingredient_options
       ingredients = Ingredient.all
       @ingredient_options = ingredients.collect do |ingredients|
         [ingredients.name, ingredients.id]
-      end
+    end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
